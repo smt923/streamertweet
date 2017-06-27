@@ -44,7 +44,6 @@ func main() {
 	}
 
 	for {
-
 		fmt.Println("[LOG] - Beginning checks")
 		for i, streamer := range streams {
 			rand.Seed(time.Now().UnixNano())

@@ -23,7 +23,6 @@ func TestUsersTweetBool(t *testing.T) {
 	if err != nil {
 		t.Error("Error was not nil for reading streamers: ", err)
 	}
-
 	for i, streamer := range streams {
 		if streamer.Tweeted != true {
 			t.Error("Streamer not marked as tweeted - we would be tweeting on first run!", streams[i])
@@ -53,12 +52,10 @@ func TestTwitter(t *testing.T) {
 	client := anaconda.NewTwitterApi(keys["TOK"], keys["TOKSEC"])
 
 	ok, err := client.VerifyCredentials()
-
 	if err != nil {
 		t.Log(ok)
 		t.Error(err)
 	}
-
 	if ok != true {
 		t.Log(ok)
 		t.Error(err)
@@ -106,11 +103,9 @@ func TestLengthCheck(t *testing.T) {
 	if FitsTweet(longString) != false {
 		t.Error("FitsTweet allowed a long string")
 	}
-
 	if FitsTweet(shortString) != true {
 		t.Error("FitsTweet didn't allow a string that fits")
 	}
-
 	if FitsTweet(exactString) != true {
 		t.Error("FitsTweet didn't allow a 140 chars string")
 	}
@@ -122,19 +117,15 @@ func TestShortGame(t *testing.T) {
 	if ShortGame("Counter-Strike: Global Offensive") != "#CSGO" {
 		t.Error("ShortGame did not return a shortened string for CSGO")
 	}
-
 	if ShortGame("Hearthstone: Heroes of Warcraft") != "#Hearthstone" {
 		t.Error("ShortGame did not return a shortened string for Hearthstone")
 	}
-
 	if ShortGame("Overwatch") != "#Overwatch" {
 		t.Error("ShortGame did not return a hashtag version for Overwatch")
 	}
-
 	if ShortGame("Dark Souls") != "Dark Souls" {
 		t.Error("ShortGame did not simply return the game name if it's not in our list")
 	}
-
 	if ShortGame("") != "some games" {
 		t.Error("ShortGame did not return 'some games' for an empty game")
 	}
